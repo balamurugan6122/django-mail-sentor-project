@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Template</title>
+</head>
+<body>
+    <h1>Send an Email</h1>
+
+    {% if email_sent %}
+        <!-- Email Sent Confirmation -->
+        <div>
+            <h2>Email Sent</h2>
+            <p>Your email has been successfully sent to {{ recipient_name }}.</p>
+        </div>
+    {% else %}
+        <!-- Email Form -->
+        <form method="post">
+            {% csrf_token %}
+            <label for="recipient_email">Recipient Email:</label>
+            <input type="email" id="recipient_email" name="recipient_email" required>
+            <label for="email_message">Text Message:</label>
+            <textarea id="email_message" name="email_message" rows="4" required></textarea>
+            <button type="submit">Send Email</button>
+        </form>
+    {% endif %}
+</body>
+</html>
